@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
-import { Header } from './Searchbar.styled';
 import { toast } from 'react-toastify';
+import { BsSearch } from 'react-icons/bs';
+import { Component } from 'react';
+import { Header, Input, Button, Form } from './Searchbar.styled';
 
 class SearchForm extends Component {
   state = {
@@ -34,17 +35,18 @@ class SearchForm extends Component {
   render() {
     return (
       <Header>
-        <form className="form" onSubmit={this.handleSumbitForm}>
-          <button
+        <Form onSubmit={this.handleSumbitForm}>
+          <Button
             type="submit"
             className="button"
             disabled={this.props.isLoading}
           >
-            <span className="button-label">Search</span>
-          </button>
+            <span className="button-label">
+              <BsSearch style={{ width: 20, height: 20 }} />
+            </span>
+          </Button>
 
-          <input
-            className="input"
+          <Input
             type="text"
             autoComplete="off"
             autoFocus
@@ -52,7 +54,7 @@ class SearchForm extends Component {
             onChange={this.handleInputChange}
             value={this.state.searchValue}
           />
-        </form>
+        </Form>
       </Header>
     );
   }
@@ -63,5 +65,5 @@ export default SearchForm;
 SearchForm.propTypes = {
   isLoading: PropTypes.bool,
   onSubmit: PropTypes.func,
-  resetPage: PropTypes.func,  
+  resetPage: PropTypes.func,
 };

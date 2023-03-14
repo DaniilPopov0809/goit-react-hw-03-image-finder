@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { Component } from 'react';
 import { List } from './ImageGallery.styled';
-import { Loader } from 'components/Loader/Loader';
-import { LoadMore } from 'components/Button/Button';
-import ModalWindow from 'components/Modal/Modal';
-import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import  Loader  from 'components/Loader/';
+import  LoadMore  from 'components/Button';
+import ModalWindow from 'components/Modal';
+import ImageGalleryItem from 'components/ImageGalleryItem';
 
 export default class ImageGallery extends Component {
   state = {
@@ -70,12 +70,14 @@ export default class ImageGallery extends Component {
       const response = await axios.get(BASE_URL, PARAMS);
       const data = response.data.hits;
       limitData = response.data.totalHits;
-
+      if(data.length === 0){
+        toast.error('Image or photo not found!');
+      }
       this.setState(prevState => ({
         galery: [...prevState.galery, ...data],
       }));
     } catch (error) {
-      toast.error('Image or photo not found!');
+      toast.error('Oops, something went wrong!');
       this.setState({ button: true });
     } finally {
       this.setState({ loading: false });
@@ -118,7 +120,7 @@ export default class ImageGallery extends Component {
             ))}
           </List>
         )}
-        {loading && <Loader />};
+        {loading && <Loader />}
         {button && (
           <LoadMore currentPage={this.onIncrementPage} page={this.state.page} />
         )}

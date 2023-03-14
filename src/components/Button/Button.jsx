@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Button, Wrapper } from './Button.styled';
 
-export const LoadMore = ({ currentPage }) => {
+ const LoadMore = ({ currentPage }) => {
   return (
     <>
       <Wrapper>
@@ -16,3 +16,5 @@ export const LoadMore = ({ currentPage }) => {
 LoadMore.propTypes = {
   currentPage: PropTypes.func,
 };
+
+export default LoadMore;

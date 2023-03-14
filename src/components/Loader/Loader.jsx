@@ -1,14 +1,14 @@
 import { Circles } from 'react-loader-spinner';
 import { Wrapper } from './Loader.styled';
 
-export const Loader = () => {
+ const Loader = () => {
   return (
     <>
     <Wrapper>
       <Circles
         height="50"
         width="50"
-        color="#3f51b5"
+        color="#c6c2c5"
         ariaLabel="circles-loading"
         wrapperStyle={{}}
         wrapperClass=""
@@ -18,3 +18,5 @@ export const Loader = () => {
     </>
   );
 };
+
+export default Loader;
